@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    
+    <title>Suppliers</title>
+</head>
+<body>
+    <div class="container">
+        <h3>Suppliers Table</h3>
+        
+        <!-- Adding add button -->
+        <a th:href="@{/suppliers/showFormForAdd}" class="btn btn-primary mb-3"> Add Supplier </a>
+    <table class="table table-striped table-bordered ">
+        <thead class="table-dark">
+           <tr>
+           
+              
+               <th>Name</th>
+               <th>Mfg License</th>
+               <th>Address</th>
+               <th>Email</th>
+               <th>Action</th>
+               
+           
+           </tr>
+        </thead>    
+       
+        <tbody>
+            <tr th:each = "tempSupplier : ${suppliers}">
+            
+            	
+                <td th:text = "${tempSupplier.name}"></td>
+                <td th:text ="${tempSupplier.mfgLicense}"></td>
+                <td th:text="${tempSupplier.address}"></td>
+                <td th:text="${tempSupplier.email}"></td>
+                <td>
+                                                                    <!-- This retrives the id atrribute and appends to the URL -->
+                    <a th:href="@{/suppliers/showFormForUpdate(supplierid=${tempSupplier.id})}" class="btn btn-secondary">Update</a>
+                    
+                    <a th:href="@{/suppliers/delete(supplierid=${tempSupplier.id})}" class="btn btn-danger" onclick="if (!(confirm('Are you sure you want to delete this Supplier'))) return false">Delete</a>
+                </td>
+                
+              
+            </tr>
+
+        </tbody>
+        
+    </table>
+
+
+    </div>
+    <div>
+        <a th:href="@{/pharmacists/list}">Pharmacists List</a>
+        </div>
+        <div>
+        	 <a th:href="@{/medicine/list}">medicine List</a>
+        </div>
+        
+        <div>
+        	<a th:href="@{/customers/list}">Customer List</a>
+        </div>
+    
+</body>
+</html>

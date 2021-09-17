@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    
+    <title>Pharmacists</title>
+</head>
+<body>
+  <div class="container">
+        <h3>Pharmacist directory</h3>
+
+
+
+
+
+        <form action="#" th:action = "@{/medicine/save}" th:object="${med}" class="form-group" method="POST">
+        
+        
+        
+        
+        	<!-- Hidden id attribute for update id -->
+        		<input type="hidden" th:field="*{id}" />
+            <div class="col-4">
+                <input type="text" th:field="*{name}" class ="form-control mb-4 " placeholder="Name">
+            </div>
+            <div class="col-4">
+                <input type="text" th:field="*{csa}" class ="form-control mb-4 " placeholder="CSA">
+            </div>
+            <div class="col-4">
+                <input type="text" th:field="*{batchNumber}" class ="form-control mb-4 " placeholder="Batch Number">
+            </div>
+            <div class="col-4">
+                <input type="date" th:field="*{expireDate}" class ="form-control mb-4 " placeholder="Expire Date">
+            </div>
+            
+            
+            
+
+            <button type="submit" class="btn btn-success mb-4 col-2">Save</button>
+
+
+
+
+
+        </form>
+
+        <hr>
+        
+        <a th:href="@{/medicine/list}">Medicine List</a>
+
+
+
+
+    </div>
+ 
+    
+</body>
+</html>
